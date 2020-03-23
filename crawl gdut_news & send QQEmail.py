@@ -103,6 +103,3 @@ if __name__ == '__main__':
     url = 'http://www.gdut.edu.cn/'
     html = get_html(url)
     sent_email(mail_body=parse_html(html))
-
-    
-    
