@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1114d677-6fcc-4885-a180-aad07229ccaf" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/../crawl gdut_news &amp; send QQEmail.py" beforeDir="false" afterPath="$PROJECT_DIR$/../crawl gdut_news &amp; send QQEmail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movies/movies.csv" beforeDir="false" afterPath="$PROJECT_DIR$/movies/movies.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="S:/大一下/QG工作室/QG-Data mining Group/Fourth Train/Scrapy_dbmovies" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -37,6 +39,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1587884658037">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587884658037" />
     <state x="544" y="57" key="SettingsEditor" timestamp="1587865263081">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
