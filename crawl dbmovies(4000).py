@@ -21,7 +21,7 @@ def get_proxy():
     @参数: 无
     @返回: 代理IP列表
     """
-    proxies = []  # 存储代理IP
+    proxies = [] # 存储代理IP
 
     url = 'http://piping.mogumiao.com/proxy/api/get_ip_al?appKey=983b0cd2c07346b48904fb702b1e8b19&count=5&expiryDate=0&format=1&newLine=2'
     res = requests.get(url=url)
