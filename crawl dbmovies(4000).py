@@ -26,8 +26,8 @@ def get_proxy():
     url = 'http://piping.mogumiao.com/proxy/api/get_ip_al?appKey=983b0cd2c07346b48904fb702b1e8b19&count=5&expiryDate=0&format=1&newLine=2'
     res = requests.get(url=url)
 
-    ip = re.findall(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', res.text)  # 提取IP
-    port = re.findall(r'\d{5}', res.text)  # 提取端口号
+    ip = re.findall(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', res.text) # 提取IP
+    port = re.findall(r'\d{5}', res.text) # 提取端口号
 
     # 拼接
     for i in range(5):
@@ -108,15 +108,15 @@ def parse_movies(movies_lists):
     count = 1 # 日志参数
     for i in range(len(movies_lists)):
         for j in movies_lists[i]:
-            name = j['title']  # 电影名称
-            rate = j['rate']  # 电影评分
+            name = j['title'] # 电影名称
+            rate = j['rate'] # 电影评分
             try:
                 directors = j['directors'][0] # 导演
             except:
                 directors = None
-            dataID = j['id']  # 电影ID
-            url = j['url']  # 电影链接
-            pic = j['cover']  # 电影海报
+            dataID = j['id'] # 电影ID
+            url = j['url'] # 电影链接
+            pic = j['cover'] # 电影海报
             actors = '  '.join(j['casts']) # 主演
 
 
@@ -124,20 +124,20 @@ def parse_movies(movies_lists):
                 proxies = get_proxy()
                 print("更新代理IP!")
 
-            text = get_html(url, proxies)  # 获取每部电影的页面
-            html = etree.HTML(text)  # 解析每部电影的页面
+            text = get_html(url, proxies) # 获取每部电影的页面
+            html = etree.HTML(text) # 解析每部电影的页面
 
             # 电影英文名称
             english_name = html.xpath("//*[@id='content']/h1/span[1]/text()")[0]
             # 判断字符串中是否存在英文
             if bool(re.search('[A-Za-z]', english_name)):
-                english_name = english_name.split(' ')  # 分割字符串以提取英文名称
+                english_name = english_name.split(' ') # 分割字符串以提取英文名称
                 del english_name[0]  # 去除中文名称
-                english_name = ' '.join(english_name)  # 重新以空格连接列表中的字符串
+                english_name = ' '.join(english_name) # 重新以空格连接列表中的字符串
             else:
                 english_name = None
 
-            info = html.xpath("//div[@class='subject clearfix']/div[@id='info']//text()")  # 每部电影的相关信息
+            info = html.xpath("//div[@class='subject clearfix']/div[@id='info']//text()") # 每部电影的相关信息
 
 
             # 编剧
@@ -159,7 +159,7 @@ def parse_movies(movies_lists):
                             break
                 if flag == 0:
                     break
-            writer = ''.join(writer)  # 转换为字符串形式
+            writer = ''.join(writer) # 转换为字符串形式
 
 
             # 电影类型
@@ -266,7 +266,7 @@ def parse_movies(movies_lists):
                             break
                 if flag == 0:
                     break
-            date = ''.join(date)  # 转换为字符串形式
+            date = ''.join(date) # 转换为字符串形式
 
 
             # 电影片长
@@ -289,7 +289,7 @@ def parse_movies(movies_lists):
                             break
                 if flag == 0:
                     break
-            duration = ''.join(duration)  # 转换为字符串形式
+            duration = ''.join(duration) # 转换为字符串形式
 
             # 电影简介
             introduction = ''.join(html.xpath("//div[@class='related-info']/div[@id='link-report']/span/text()")).strip().replace(' ', '').replace('\n', '').replace('\xa0', '').replace(u'\u3000', u' ')
@@ -347,14 +347,14 @@ def save_to_csv(movies):
     @返回: 无
     """
     item = ['name', 'english_name', 'directors', 'writer', 'actors', 'rate', 'style1', 'style2', 'style3', 'country',
-            'language', 'date', 'duration', 'introduction', 'dataID', 'url', 'pic']  # 列索引
-    MOVIES = pd.DataFrame(data=movies, columns=item)  # 转换为DataFrame数据格式
-    MOVIES.to_csv('doubanMovies.csv', mode='a', encoding='utf-8')  # 存入csv文件
+            'language', 'date', 'duration', 'introduction', 'dataID', 'url', 'pic'] # 列索引
+    MOVIES = pd.DataFrame(data=movies, columns=item) # 转换为DataFrame数据格式
+    MOVIES.to_csv('doubanMovies.csv', mode='a', encoding='utf-8') # 存入csv文件
 
 
 if __name__ == '__main__':
-    num = 200  # 20*num部电影
-    movies_lists = crawl_movies(num)  # 获取电影URL链接等信息
+    num = 200 # 20*num部电影
+    movies_lists = crawl_movies(num) # 获取电影URL链接等信息
     movies = parse_movies(movies_lists) # 解析网页
-    save_to_csv(movies)  # 存入csv文件
-    download_img(movies, num)  # 保存电影海报图片
+    save_to_csv(movies) # 存入csv文件
+    download_img(movies, num) # 保存电影海报图片
