@@ -11,11 +11,9 @@ import pandas as pd
 browser = webdriver.Chrome() # 获取浏览器对象
 WAIT = WebDriverWait(browser,10) # 指定最长等待时间
 
-
 url = 'https://www.bilibili.com'
 print('开始访问b站……')
 browser.get(url)
-
 
 def search(content):
     print('正在进行搜索……')
@@ -26,7 +24,6 @@ def search(content):
     # 从搜索框输入并点击搜索
     input.send_keys(content)
     submit.click()
-
 
 def crawl():
     htmls = [] # 存放每个页面的HTML
@@ -64,13 +61,11 @@ def parse(htmls):
         
     return items
 
-
 def save_to_csv(items):
     print('成功将数据写入文件！')
     # 将爬取的数据写入csv文件
     df = pd.DataFrame(items) # 用DataFrame构造数据框
     df.to_csv("华晨宇.csv")
-
 
 def main():
     try:
@@ -81,7 +76,6 @@ def main():
     finally:
         print('爬取信息成功！')
         browser.close()
-
 
 if __name__ == '__main__':
     main()
